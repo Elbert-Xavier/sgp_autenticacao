@@ -1,0 +1,370 @@
+/* BASE & DESIGN TOKENS (Alinhados com o CSS original de login) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --primary-color: #001f6b;
+    --secondary-color: #003b8f;
+    --accent-color: #0066ff;
+    --bg-light: #f4f7fc;
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-secondary: #4b5870;
+    --text-muted: #8a96aa;
+    --border-color: #c9d4e5;
+    --sidebar-gradient: linear-gradient(180deg, #001f6b 0%, #003b8f 100%);
+    --shadow-subtle: 0 4px 15px rgba(0, 38, 100, 0.05);
+    --shadow-card: 0 10px 25px rgba(0, 38, 100, 0.08);
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* LAYOUT PRINCIPAL */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* SIDEBAR (MENU LATERAL) */
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-gradient);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.sidebar-top {
+    width: 100%;
+}
+
+/* Estilização da Logo SGP */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+}
+
+.brand-logo-mock {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.brand-text h1 {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.brand-text p {
+    font-size: 10px;
+    color: #eaf2ff;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+/* Menus de Navegação */
+.navigation-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #eaf2ff;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.menu-item a:hover, .menu-item.active a {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-weight: bold;
+    transform: translateX(5px);
+}
+
+.menu-item.active a {
+    background: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+}
+
+/* Rodapé da Sidebar / Botão de Sair */
+.sidebar-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ff4d4d;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    background: rgba(255, 77, 77, 0.05);
+}
+
+.btn-logout:hover {
+    background: #ff4d4d;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.2);
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-light);
+    overflow-y: auto;
+}
+
+/* HEADER SUPERIOR */
+.top-header {
+    background-color: var(--bg-card);
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-subtle);
+}
+
+.welcome-msg h2 {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+.welcome-msg span {
+    font-weight: normal;
+    color: var(--text-secondary);
+}
+
+.top-header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.current-date {
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: #eaf2ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* ÁREA DO CORPO DO DASHBOARD */
+.dashboard-body {
+    padding: 40px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* CARD DE INFORMAÇÕES DO PERFIL */
+.profile-hero-card {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 35px;
+    border: 1px solid rgba(201, 212, 229, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.profile-meta-block {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #003b8f, #0066ff);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 31, 107, 0.25);
+}
+
+.profile-info h3 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-badge {
+    display: inline-block;
+    background: #001f6b;
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-access-log {
+    text-align: right;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.profile-access-log p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+}
+
+.profile-access-log text {
+    font-size: 15px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* CARDS DE MÉTRICAS */
+.section-title {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.metric-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid #e1e8f2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.metric-card .title {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: bold;
+}
+
+.metric-card .value {
+    font-size: 28px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.metric-card .status {
+    font-size: 12px;
+    font-weight: bold;
+}
+.status.positive { color: #2e7d32; }
+.status.warning { color: #f57c00; }
+
+/* REGRAS DE RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    .profile-hero-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .profile-access-log {
+        text-align: left;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    .brand {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .top-header {
+        padding: 0 20px;
+    }
+    .dashboard-body {
+        padding: 20px;
+    }
+    .current-date {
+        display: none;
+    }
+}

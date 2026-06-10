@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP - Dashboard Inicial</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <div class="brand-logo-mock">⚙</div>
+                    <div class="brand-text">
+                        <h1>SGP</h1>
+                        <p>Gestão de Peças</p>
+                    </div>
+                </div>
+
+                <nav>
+                    <ul class="navigation-menu">
+                        <li class="menu-item active">
+                            <a href="#dashboard">
+                                <span>📊</span> Dashboard Inicial
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#pecas">
+                                <span>📦</span> Cadastro de Peças
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#estoque">
+                                <span>🔄</span> Controle de Estoque
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#fornecedores">
+                                <span>🏭</span> Fornecedores
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#relatorios">
+                                <span>📈</span> Relatórios Gerais
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#configuracoes">
+                                <span>⚙️</span> Configurações
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn-logout" title="Encerrar sessão com segurança">
+                    <span>🚪</span> Sair do Sistema
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="welcome-msg">
+                    <h2>Olá, Carlos Eduardo!</h2>
+                </div>
+                <div class="top-header-right">
+                    <div class="current-date">Painel Operacional</div>
+                </div>
+            </header>
+
+            <div class="dashboard-body">
+                
+                <h3 class="section-title">Visão Geral do Usuário</h3>
+
+                <section class="profile-hero-card">
+                    <div class="profile-meta-block">
+                        <div class="profile-avatar">CE</div>
+                        
+                        <div class="profile-info">
+                            <h3>Carlos Eduardo Silva</h3>
+                            <p><strong> E-mail:</strong> carlos.silva@sgp.com.br</p>
+                            <p><strong> Função:</strong> <span class="profile-badge">Administrador de Estoque</span></p>
+                        </div>
+                    </div>
+
+                    <div class="profile-access-log">
+                        <p>Último acesso ao sistema em:</p>
+                        <text>10/06/2026 às 18:42</text>
+                    </div>
+                </section>
+
+                <h3 class="section-title">Resumo do Inventário</h3>
+                <section class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="title">Total de Peças Cadastradas</span>
+                        <span class="value">1.248</span>
+                        <span class="status positive">↑ 12 novas essa semana</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="title">Alertas de Estoque Crítico</span>
+                        <span class="value">7</span>
+                        <span class="status warning">⚠️ Requer reposição imediata</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="title">Fornecedores Ativos</span>
+                        <span class="value">34</span>
+                        <span class="status positive">● Operando normalmente</span>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
