@@ -1,6 +1,7 @@
 package br.com.implantacao.sgp_autenticacao.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,40 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("Usuario")
-@CrossOrigin("*")
+import br.com.implantacao.sgp_autenticacao.entity.UsuarioEntity;
+import br.com.implantacao.sgp_autenticacao.repository.UsuarioRepository;
 
+@RestController
+@RequestMapping("/Usuario")
+@CrossOrigin("*")
 public class UsuarioContoller {
 
 	@Autowired
-	
-private br.com.implantacao.sgp_autenticacao.repository.UsuarioRepository Usu;
+	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping("/listarTodos")
 	@ResponseStatus(HttpStatus.OK)
-	public List<br.com.implantacao.sgp_autenticacao.entity.UsuarioEntity>BuscarCadastro(){
-		return Usu.findAll();
-		
+	public List<UsuarioEntity>BuscarUsuario(){
+		return usuarioRepository.findAll();
+	}
+	@GetMapping("/listarUsuarioPorID/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Optional<UsuarioEntity>BuscarUsuarioPorID(@PathVariable Integer id){
+		return usuarioRepository.findById(id);
 	}
 	
 	@PostMapping("/gravar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public br.com.implantacao.sgp_autenticacao.entity.UsuarioEntity gravarUsuario(@RequestBody br.com.implantacao.sgp_autenticacao.entity.UsuarioEntity Usuar) {
-		return Usu.save(Usuar);
+	public UsuarioEntity gravarUsuario(@RequestBody UsuarioEntity Usuario) {
+		return usuarioRepository.save(Usuario);
 	}
 	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/deletar/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public String deletarUsuario(@PathVariable Integer id) {
-		return "Usuario Deletado";
+		if (usuarioRepository.existsById(id)) {
+			usuarioRepository.deleteById(id);
+			return "Usuario Deletado";
+		}
+			return "Usuario Não Encontrado";
 		
 	}
 	
-	@PutMapping("/atualizar")
+	@PutMapping("/atualizar/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public String atualizartabela(@PathVariable Integer id) {
-		return "Atualizado";
+	public UsuarioEntity atualizarUsuario(@PathVariable Integer id,@RequestBody UsuarioEntity Usuario) {
+		if (usuarioRepository.existsById(id)) {
+			Usuario.setId(id);
+			return usuarioRepository.save(Usuario);
+		}return null;
 	
 }
 
