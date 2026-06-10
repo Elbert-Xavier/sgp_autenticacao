@@ -1,0 +1,165 @@
+/* =========================================
+   Configurações Gerais
+   ========================================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at center, #f4f7fb 0%, #d5e3f3 40%, #1e4b85 150%);
+    margin: 0;
+    padding: 0;
+}
+
+/* Cores Personalizadas */
+.text-dark-blue { color: #0b1f52; }
+.text-muted { color: #6a778b !important; }
+.icon-muted { color: #94a3b8; }
+
+.text-description {
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* =========================================
+   Card e Inputs
+   ========================================= */
+.login-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.custom-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.custom-input-group:focus-within {
+    border-color: #0d47a1;
+    box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, 0.15);
+}
+
+.custom-input-group input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    flex-grow: 1;
+    padding: 0 10px;
+    font-size: 0.95rem;
+    color: #334155;
+    background: transparent;
+}
+
+.custom-input-group input::placeholder {
+    color: #94a3b8;
+}
+
+.custom-input-group input:focus {
+    box-shadow: none;
+    border: none;
+}
+
+/* =========================================
+   Botões e Links
+   ========================================= */
+.btn-primary-custom {
+    background: linear-gradient(90deg, #022069 0%, #0d47a1 100%);
+    border: none;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.btn-primary-custom:hover {
+    background: linear-gradient(90deg, #011649 0%, #09377e 100%);
+    color: white;
+}
+
+.btn-primary-custom:active {
+    transform: scale(0.98);
+}
+
+.action-link {
+    color: #0d47a1;
+    transition: color 0.2s ease;
+}
+
+.action-link:hover {
+    color: #022069;
+    text-decoration: underline !important;
+}
+
+/* =========================================
+   Logo SGP (HTML/CSS)
+   ========================================= */
+.sgp-css-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.sgp-logo-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.sgp-gear-icon {
+    font-size: 4.5rem;
+    background: linear-gradient(135deg, #e2e8f0 0%, #64748b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: -18px; 
+    z-index: 1;
+    filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
+}
+
+.sgp-title-letters {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    margin: 0;
+    z-index: 2;
+    letter-spacing: -3px;
+    filter: drop-shadow(3px 5px 5px rgba(0,0,0,0.3));
+}
+
+.sgp-blue-letters {
+    background: linear-gradient(180deg, #3b82f6 0%, #0b1f52 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sgp-silver-letter {
+    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sgp-subtitle-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 1.5px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 991px) {
+    body {
+        background: radial-gradient(circle at top, #f4f7fb 0%, #d5e3f3 60%, #1e4b85 200%);
+    }
+}
