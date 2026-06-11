@@ -37,6 +37,7 @@ async function logar(){
 			"usuarioLogado",
 			JSON.stringify(data)
 		);
+		localStorage.setItem('estado','logado')
 		window.location.href = "dashboard.html";
 	}else{
 		alert("Email ou Senha invalidos!");

@@ -6,11 +6,15 @@ async function enviarCodigo() {
 	let gmail = document.getElementById('emailDigitado').value;
 	
 	const response = await fetch(`${API_BUSCAR_GMAIL}/${gmail}`)
-	const dados = await response.json;
+	const dados = await response.json();
 	
 	if(dados){
 		
+		const enviargmail = await fetch(`${API_ENVIAR_GMAIL}/${gmail}`)
+		
+	}else{
+		
 	}
-	console.log(dados)
+	
 	
 }

@@ -1,6 +1,7 @@
 package br.com.implantacao.sgp_autenticacao.controllers;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +53,7 @@ public class UsuarioContoller {
 	@PostMapping("/gravar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsuarioEntity gravarUsuario(@RequestBody UsuarioEntity Usuario) {
+		Usuario.setDataHoraCadastro((LocalDate.now()));
 		Usuario.setSenha(encoder.encode(Usuario.getSenha()));
 		return usuarioRepository.save(Usuario);
 	}
@@ -88,13 +90,12 @@ public class UsuarioContoller {
 	}
 	@PutMapping("/novaSenha/{novasenha}/{confirmacao}")
 	public UsuarioEntity NovaSenhaUsuario(@PathVariable String novasenha,@PathVariable String confirmacao,@RequestBody UsuarioEntity Usuario) {
-		if (novasenha == confirmacao) {
+		if (novasenha.equals(confirmacao)) {
 			Usuario.setSenha(encoder.encode(confirmacao));
 			return usuarioRepository.save(Usuario);
 		}else {
 			return null;
 		}
-		
 		
 	}
 	

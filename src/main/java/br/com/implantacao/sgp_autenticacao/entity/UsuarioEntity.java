@@ -1,7 +1,7 @@
 package br.com.implantacao.sgp_autenticacao.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,9 +27,8 @@ public class UsuarioEntity implements Serializable {
 	private String email;
 	private String senha;
 	private String cep;
-	private int numero;
 	private String areaDeAtuacao;
-	private LocalDateTime dataHoraCadastro;
+	private LocalDate dataHoraCadastro;
 	
 	
 	public int getId() {
@@ -68,23 +67,17 @@ public class UsuarioEntity implements Serializable {
 	public void setAreaDeAtuacao(String areaDeAtuacao) {
 		this.areaDeAtuacao = areaDeAtuacao;
 	}
-	public LocalDateTime getDataHoraCadastro() {
-		return dataHoraCadastro;
-	}
-	public void setDataHoraCadastro(LocalDateTime dataHoraCadastro) {
-		this.dataHoraCadastro = dataHoraCadastro;
-	}
-	public int getNumero() {
-		return numero;
-	}
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
 	public String getCep() {
 		return cep;
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public LocalDate getDataHoraCadastro() {
+		return dataHoraCadastro;
+	}
+	public void setDataHoraCadastro(LocalDate dataHoraCadastro) {
+		this.dataHoraCadastro = dataHoraCadastro;
 	}
 	
 	
