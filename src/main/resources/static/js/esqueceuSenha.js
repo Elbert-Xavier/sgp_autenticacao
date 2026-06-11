@@ -8,6 +8,9 @@ async function enviarCodigo() {
 	const response = await fetch(`${API_BUSCAR_GMAIL}/${gmail}`)
 	const dados = await response.json;
 	
+	if(dados){
+		
+	}
 	console.log(dados)
 	
 }

@@ -26,7 +26,8 @@ public class UsuarioEntity implements Serializable {
 	private String cpf;
 	private String email;
 	private String senha;
-	private String enderecoCompleto;
+	private String cep;
+	private int numero;
 	private String areaDeAtuacao;
 	private LocalDateTime dataHoraCadastro;
 	
@@ -61,12 +62,6 @@ public class UsuarioEntity implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getEnderecoCompleto() {
-		return enderecoCompleto;
-	}
-	public void setEnderecoCompleto(String enderecoCompleto) {
-		this.enderecoCompleto = enderecoCompleto;
-	}
 	public String getAreaDeAtuacao() {
 		return areaDeAtuacao;
 	}
@@ -78,6 +73,18 @@ public class UsuarioEntity implements Serializable {
 	}
 	public void setDataHoraCadastro(LocalDateTime dataHoraCadastro) {
 		this.dataHoraCadastro = dataHoraCadastro;
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	
 	

@@ -1,10 +1,13 @@
 package br.com.implantacao.sgp_autenticacao.controllers;
 
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,9 @@ public class UsuarioContoller {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@GetMapping("/listarTodos")
 	@ResponseStatus(HttpStatus.OK)
 	public List<UsuarioEntity>BuscarUsuario(){
@@ -46,7 +52,28 @@ public class UsuarioContoller {
 	@PostMapping("/gravar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsuarioEntity gravarUsuario(@RequestBody UsuarioEntity Usuario) {
+		Usuario.setSenha(encoder.encode(Usuario.getSenha()));
 		return usuarioRepository.save(Usuario);
+	}
+	@PostMapping("/login")
+	public ResponseEntity<UsuarioEntity> login(@RequestBody UsuarioEntity usuarioLogin) {
+	    // busca usuário por email
+	    Optional<UsuarioEntity> usuario =
+	    		usuarioRepository.findByEmail(usuarioLogin.getEmail());
+	    // se encontrou usuário, verifica senha
+	    if (usuario.isPresent()) {
+
+	        UsuarioEntity usuarioEncontrado = usuario.get();
+	        // compara senha enviada com senha armazenada (hash)
+	        if (encoder.matches(
+	                usuarioLogin.getSenha(),
+	                usuarioEncontrado.getSenha())) {
+
+	            return ResponseEntity.ok(usuarioEncontrado);
+	        }
+	    }
+	    // se não encontrou usuário ou senha não bate, retorna 401
+	    return ResponseEntity.status(401).build();
 	}
 	
 	@DeleteMapping("/deletar/{id}")
@@ -59,12 +86,25 @@ public class UsuarioContoller {
 			return "Usuario Não Encontrado";
 		
 	}
+	@PutMapping("/novaSenha/{novasenha}/{confirmacao}")
+	public UsuarioEntity NovaSenhaUsuario(@PathVariable String novasenha,@PathVariable String confirmacao,@RequestBody UsuarioEntity Usuario) {
+		if (novasenha == confirmacao) {
+			Usuario.setSenha(encoder.encode(confirmacao));
+			return usuarioRepository.save(Usuario);
+		}else {
+			return null;
+		}
+		
+		
+	}
+	
 	
 	@PutMapping("/atualizar/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public UsuarioEntity atualizarUsuario(@PathVariable Integer id,@RequestBody UsuarioEntity Usuario) {
 		if (usuarioRepository.existsById(id)) {
 			Usuario.setId(id);
+			Usuario.setSenha(encoder.encode(Usuario.getSenha()));
 			return usuarioRepository.save(Usuario);
 		}return null;
 	

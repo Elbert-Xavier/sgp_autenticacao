@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>SGP - Login</title>
 		<link rel="stylesheet" href="css/style.css">
+		<script type="text/javascript" src="js/index.js"	></script>
 	</head>
 	<body>
 
@@ -35,10 +36,10 @@
 					<div class="input-box">
 						<span>🔒</span>
 						<input type="password" id="senha" placeholder="Digite sua senha">
-						<span>👁</span>
+						<span onclick="revelar()">👁</span>
 					</div>
 						
-					<button type="submit">Entrar</button>
+					<button type="button" onclick="logar()">Entrar</button>
 				</form>
 					
 				<div class="divisor">

@@ -1,59 +1,44 @@
-  <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SGP - Login</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+let revelarValor = 1
 
-<main class="container">
+async function revelar() {
+	
+	const revela = document.getElementById('senha')
+	console.log(revela)
+	
+	if(revelarValor == 1){
+		revela.type = "text";
+		revelarValor=2;
+		
+	}else if(revelarValor == 2) {
+		revela.type = "password";
+		revelarValor=1;
+	}
+}
 
-<section class="lado-esquerdo">
-<img src="logo.png" alt="Logo SGP" class="logo">
-
-<h1>Bem-vindo ao SGP</h1>
-<p>
-O sistema completo para controlar, organizar<br>
-e gerenciar suas peças com eficiência.
-</p>
-</section>
-
-<section class="card-login">
-<h2>Acesse sua conta</h2>
-<p class="subtitulo">Informe seus dados para entrar no sistema</p>
-
-<form>
-<label for="email">E-mail</label>
-<div class="input-box">
-<span>✉</span>
-<input type="email" id="email" placeholder="Digite seu e-mail">
-</div>
-
-<label for="senha">Senha</label>
-<div class="input-box">
-<span>🔒</span>
-<input type="password" id="senha" placeholder="Digite sua senha">
-<span>👁</span>
-</div>
-
-<button type="submit">Entrar</button>
-</form>
-
-<div class="divisor">
-<span></span>
-<p>ou</p>
-<span></span>
-</div>
-
-<div class="links">
-<a href="#">Cadastrar</a>
-<a href="#">Esqueci minha senha</a>
-</div>
-</section>
-
-</main>
-
-</body>
-</html>
+async function logar(){
+	const email = document.getElementById('email').value
+	const senha = document.getElementById('senha').value
+	
+	const Usuario = {
+			email: email,
+			senha: senha
+	};
+	const response = await fetch("http://localhost:8000/Usuario/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(Usuario)
+		
+	});
+	if(response.ok) {
+		const data = await response.json();
+		localStorage.setItem(
+			"usuarioLogado",
+			JSON.stringify(data)
+		);
+		window.location.href = "dashboard.html";
+	}else{
+		alert("Email ou Senha invalidos!");
+	}
+}
