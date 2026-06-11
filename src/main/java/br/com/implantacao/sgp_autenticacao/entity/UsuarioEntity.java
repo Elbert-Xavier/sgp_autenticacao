@@ -22,12 +22,15 @@ public class UsuarioEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private int Id;
-	private String Nome;
-	private String Cpf;
-	private String Email;
-	private String EnderecoCompleto;
-	private String AreaDeAtuacao;
-	private LocalDateTime DataHoraCadastro;
+	private String nome;
+	private String cpf;
+	private String email;
+	private String senha;
+	private String enderecoCompleto;
+	private String areaDeAtuacao;
+	private LocalDateTime dataHoraCadastro;
+	
+	
 	public int getId() {
 		return Id;
 	}
@@ -35,41 +38,49 @@ public class UsuarioEntity implements Serializable {
 		Id = id;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 	public String getCpf() {
-		return Cpf;
+		return cpf;
 	}
 	public void setCpf(String cpf) {
-		Cpf = cpf;
+		this.cpf = cpf;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public String getEnderecoCompleto() {
-		return EnderecoCompleto;
+		return enderecoCompleto;
 	}
 	public void setEnderecoCompleto(String enderecoCompleto) {
-		EnderecoCompleto = enderecoCompleto;
+		this.enderecoCompleto = enderecoCompleto;
 	}
 	public String getAreaDeAtuacao() {
-		return AreaDeAtuacao;
+		return areaDeAtuacao;
 	}
 	public void setAreaDeAtuacao(String areaDeAtuacao) {
-		AreaDeAtuacao = areaDeAtuacao;
+		this.areaDeAtuacao = areaDeAtuacao;
 	}
 	public LocalDateTime getDataHoraCadastro() {
-		return DataHoraCadastro;
+		return dataHoraCadastro;
 	}
 	public void setDataHoraCadastro(LocalDateTime dataHoraCadastro) {
-		DataHoraCadastro = dataHoraCadastro;
+		this.dataHoraCadastro = dataHoraCadastro;
 	}
+	
+	
 	
 	
 	

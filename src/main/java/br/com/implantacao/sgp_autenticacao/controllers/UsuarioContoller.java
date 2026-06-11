@@ -37,6 +37,11 @@ public class UsuarioContoller {
 	public Optional<UsuarioEntity>BuscarUsuarioPorID(@PathVariable Integer id){
 		return usuarioRepository.findById(id);
 	}
+	@GetMapping("/BuscarPorEmail/{email}")
+	@ResponseStatus(HttpStatus.OK)
+	public Optional<UsuarioEntity>BuscarEmaildeUsuario(@PathVariable String email){
+		return usuarioRepository.findByEmail(email);
+	}
 	
 	@PostMapping("/gravar")
 	@ResponseStatus(HttpStatus.CREATED)
