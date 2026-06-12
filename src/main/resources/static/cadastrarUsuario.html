@@ -4,46 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGP - Criar Conta</title>
-    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para os Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/cadastrarUsuario.css">
-  <script type="text/javascript" src="js/usuario.js"></script>
+    <script type="text/javascript" src="js/usuario.js" defer></script>
 </head>
 <body>
 
- 
-    <div class="container">
+    <div class="auth-container">
         
-        <!-- Lado Esquerdo: Banner/Logo -->
-        <div class="sidebar">
-            <div class="logo-container">
-                <div class="logo-placeholder">
-                    <span class="logo-text-bg">SGP</span>
-                </div>
-                <p class="logo-subtext">SISTEMA DE GESTÃO DE PEÇAS</p>
-            </div>
-            <h1 class="sidebar-title">Criar conta</h1>
-            <p class="sidebar-desc">Cadastre-se para acessar o sistema de gestão de peças.</p>
+        <div class="auth-sidebar">
+            <img src="img/logo.png" alt="SGP - Sistema de Gestão de Peças" class="logo-sgp">
+            
+            <h1 class="sidebar-title">Bem-vindo ao SGP</h1>
+            <p class="sidebar-desc">O sistema completo para controlar, organizar e gerenciar suas peças com eficiência. Cadastre-se para começar.</p>
         </div>
 
-        <!-- Lado Direito: Formulário -->
-        <div class="form-container">
-            <a href="index.html" class="back-link">
-                <i class="fa-solid fa-arrow-left"></i> Voltar
+        <div class="auth-form-card">
+            <a href="login.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Voltar para o login
             </a>
 
-            <h2 class="form-title">Mais informações</h2>
-            <p class="form-subtitle">Preencha os dados abaixo para completar seu cadastro</p>
+            <h2 class="form-title">Criar nova conta</h2>
+            <p class="form-subtitle">Preencha os dados abaixo para completar seu cadastro no sistema.</p>
 
-          <form id="formUsuario">
-                <!-- SEÇÃO: Dados Pessoais -->
+            <form id="formUsuario">
                 <span class="section-title">Dados Pessoais</span>
                 
-                <!-- Linha: Nome e CPF -->
                 <div class="form-row">
                     <div class="form-group size-60">
                         <label for="nome">Nome completo</label>
@@ -61,7 +50,6 @@
                     </div>
                 </div>
 
-                <!-- Linha: E-mail e Senha -->
                 <div class="form-row margin-bottom-lg">
                     <div class="form-group size-50">
                         <label for="email">E-mail</label>
@@ -79,10 +67,8 @@
                     </div>
                 </div>
 
-                <!-- SEÇÃO: Endereço Completo -->
                 <span class="section-title">Endereço</span>
 
-                <!-- Linha: CEP e Rua -->
                 <div class="form-row">
                     <div class="form-group size-40">
                         <label for="cep">CEP</label>
@@ -100,7 +86,6 @@
                     </div>
                 </div>
 
-                <!-- Linha: Número e Complemento -->
                 <div class="form-row">
                     <div class="form-group size-40">
                         <label for="numero">Número</label>
@@ -118,7 +103,6 @@
                     </div>
                 </div>
 
-                <!-- Linha: Bairro -->
                 <div class="form-group">
                     <label for="bairro">Bairro</label>
                     <div class="input-icon-wrapper">
@@ -127,7 +111,6 @@
                     </div>
                 </div>
 
-                <!-- Linha: Cidade e Estado -->
                 <div class="form-row margin-bottom-lg">
                     <div class="form-group size-60">
                         <label for="cidade">Cidade</label>
@@ -150,10 +133,8 @@
                     </div>
                 </div>
 
-                <!-- SEÇÃO: Profissional -->
                 <span class="section-title">Profissional</span>
 
-                <!-- Linha: Área de Atuação -->
                 <div class="form-group">
                     <label for="atuacao">Área de atuação</label>
                     <div class="input-icon-wrapper select-wrapper">
@@ -167,7 +148,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn-submit" onclick="salvarUsuario();">Continuar</button>
+                <button onclick="salvarUsuario()" type="button" class="btn-submit">Criar Conta</button>
             </form>
         </div>
 

@@ -1,164 +1,176 @@
-/* Reset Geral e Definições de Cores */
+/* =========================================
+   BASE & RESET
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+:root {
+    --primary-color: #001f6b;
+    --secondary-color: #003b8f;
+    --accent-color: #1a4cd2;
+    --text-dark: #222b45;
+    --text-muted: #8f9bb3;
+    --border-color: #e4e9f2;
+    --bg-input: #f7f9fc;
 }
 
 body {
-    background: radial-gradient(circle at top left, #dce8ff, #f2f6ff 60%);
+    /* Gradiente suave azul/branco idêntico ao do Login */
+    background: linear-gradient(135deg, #7ba0d4 0%, #e6effa 40%, #f4f7fc 100%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    justify-content: center;
+    color: var(--text-dark);
 }
 
-/* Container Principal (Split Screen) */
-.container {
+/* =========================================
+   LAYOUT PRINCIPAL
+   ========================================= */
+.auth-container {
     display: flex;
     width: 100%;
-    max-width: 1150px;
-    background-color: transparent;
-    align-items: flex-start; /* Alinhado ao topo para lidar bem com scroll se necessário */
-    gap: 40px;
+    max-width: 1100px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 50px;
 }
 
-/* Lado Esquerdo: Identidade Visual */
-.sidebar {
+/* Lado Esquerdo (Logo e Texto) */
+.auth-sidebar {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px;
-    position: sticky;
-    top: 40px; /* Mantém a logo visível ao rolar a página em telas grandes */
 }
 
-/* Simulação da Logomarca */
-.logo-container {
-    margin-bottom: 40px;
-}
-
-.logo-placeholder {
-    font-size: 4rem;
-    font-weight: 800;
-    color: #1e293b;
-    letter-spacing: -2px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.logo-subtext {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #1e293b;
-    letter-spacing: 1px;
-    margin-top: -5px;
-    border-top: 2px solid #1e293b;
-    padding-top: 3px;
+.logo-sgp {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    margin-bottom: -100px;
 }
 
 .sidebar-title {
-    color: #1a1a40;
-    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .sidebar-desc {
-    color: #64748b;
-    font-size: 1rem;
-    max-width: 280px;
+    color: var(--text-dark);
+    font-size: 16px;
     line-height: 1.5;
+    max-width: 350px;
 }
 
-/* Lado Direito: O Card do Formulário */
-.form-container {
-    flex: 1.4;
-    background-color: #ffffff;
-    border-radius: 24px;
-    padding: 45px;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
+/* =========================================
+   CARTÃO DO FORMULÁRIO (Lado Direito)
+   ========================================= */
+.auth-form-card {
+    flex: 1.2;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0, 31, 107, 0.08);
+    /* Controle de altura para formulários grandes */
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-/* Link Voltar */
+/* Estilizando a barra de rolagem do cartão */
+.auth-form-card::-webkit-scrollbar {
+    width: 8px;
+}
+.auth-form-card::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+.auth-form-card::-webkit-scrollbar-thumb {
+    background: #c9d4e5; 
+    border-radius: 10px;
+}
+
+/* Cabeçalho do Formulário */
 .back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #2b2b85;
+    color: var(--primary-color);
     text-decoration: none;
+    font-size: 14px;
     font-weight: 600;
-    font-size: 0.95rem;
     margin-bottom: 25px;
-    transition: transform 0.2s;
+    transition: color 0.2s;
 }
 
 .back-link:hover {
-    transform: translateX(-3px);
+    color: var(--accent-color);
 }
 
-/* Títulos do Formulário */
 .form-title {
-    color: #1a1a40;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
 .form-subtitle {
-    color: #64748b;
-    font-size: 0.9rem;
-    margin-bottom: 35px;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 30px;
 }
 
 .section-title {
     display: block;
-    color: #1a1a40;
+    color: var(--primary-color);
+    font-size: 13px;
     font-weight: 700;
-    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 25px;
     margin-bottom: 15px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px;
 }
 
-/* Layout das Linhas e Inputs */
+/* =========================================
+   ELEMENTOS DO FORMULÁRIO
+   ========================================= */
 .form-row {
     display: flex;
-    gap: 16px;
-    width: 100%;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     width: 100%;
 }
 
-/* Modificadores de espaçamento entre blocos visualmente distintos */
 .margin-bottom-lg {
-    margin-bottom: 28px;
+    margin-bottom: 5px;
 }
 
-/* Proporções baseadas no padrão da imagem original */
-.size-40 { flex: 0 0 calc(40% - 8px); }
-.size-50 { flex: 0 0 calc(50% - 8px); }
-.size-60 { flex: 0 0 calc(60% - 8px); }
+.size-40 { width: 40%; }
+.size-50 { width: 50%; }
+.size-60 { width: 60%; }
 
-.form-group label {
-    color: #1a1a40;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 6px;
 }
 
-/* Wrapper para alinhar ícone interno e o input */
 .input-icon-wrapper {
     position: relative;
     display: flex;
@@ -167,96 +179,79 @@ body {
 
 .input-icon {
     position: absolute;
-    left: 16px;
-    color: #94a3b8;
-    font-size: 1.1rem;
-    pointer-events: none;
+    left: 15px;
+    color: #a0aec0;
+    font-size: 14px;
 }
 
-.input-icon-wrapper input,
-.input-icon-wrapper select {
+input, select {
     width: 100%;
-    padding: 14px 16px 14px 46px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #1e293b;
-    font-size: 0.95rem;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-input);
+    font-size: 14px;
+    color: var(--text-dark);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s ease;
 }
 
-.input-icon-wrapper input::placeholder {
-    color: #94a3b8;
+input:focus, select:focus {
+    border-color: var(--accent-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(26, 76, 210, 0.1);
 }
 
-.input-icon-wrapper input:focus,
-.input-icon-wrapper select:focus {
-    border-color: #2b2b85;
-    box-shadow: 0 0 0 3px rgba(43, 43, 133, 0.1);
-}
-
-/* Customização dos Elementos <select> (Setas) */
-.select-wrapper::after {
-    content: '\f078';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 16px;
-    color: #1e293b;
-    font-size: 0.8rem;
-    pointer-events: none;
-}
-
-.input-icon-wrapper select {
+select {
     appearance: none;
     cursor: pointer;
 }
 
-/* Botão Continuar */
 .btn-submit {
     width: 100%;
-    background: linear-gradient(90deg, #2323b2, #2121d9);
+    padding: 14px;
+    background-color: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 16px;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
-    transition: background 0.2s, opacity 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .btn-submit:hover {
-    opacity: 0.95;
+    background-color: var(--primary-color);
 }
 
-/* Responsividade Básica (Mobile) */
-@media (max-width: 850px) {
-    .container {
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 900px) {
+    .auth-container {
         flex-direction: column;
-        gap: 20px;
-        align-items: center;
+        gap: 30px;
     }
-    
-    .sidebar {
-        position: relative;
-        top: 0;
-        padding: 10px 0;
+    .auth-sidebar {
+        margin-top: 20px;
     }
-
-    .form-container {
-        padding: 30px 20px;
+    .auth-form-card {
         width: 100%;
+        max-height: none;
+        overflow-y: visible;
     }
+}
 
+@media (max-width: 600px) {
     .form-row {
         flex-direction: column;
         gap: 0;
     }
-
     .size-40, .size-50, .size-60 {
-        flex: 1 1 100%;
+        width: 100%;
+    }
+    .auth-form-card {
+        padding: 25px;
     }
 }
