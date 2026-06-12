@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGP - Dashboard Inicial</title>
     <link rel="stylesheet" href="css/dashboard.css">
-    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="js/dashboard.js" defer></script>
 </head>
 <body>
 
@@ -14,11 +14,7 @@
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="brand">
-                    <div class="brand-logo-mock">⚙</div>
-                    <div class="brand-text">
-                        <h1>SGP</h1>
-                        <p>Gestão de Peças</p>
-                    </div>
+                    <img alt="Logo SGP" src="img/logo.png" class="logo-sidebar">
                 </div>
 
                 <nav>
@@ -58,7 +54,7 @@
             </div>
 
             <div class="sidebar-footer">
-                <a href="login.html" class="btn-logout" title="Encerrar sessão com segurança">
+                <a href="index.html" class="btn-logout" title="Encerrar sessão com segurança">
                     <span>🚪</span> Sair do Sistema
                 </a>
             </div>
@@ -68,7 +64,7 @@
             
             <header class="top-header">
                 <div class="welcome-msg">
-                    <h2>Olá, Carlos Eduardo!</h2>
+                    <h2 id="boas-vindas-nome">Olá, Carregando...</h2>
                 </div>
                 <div class="top-header-right">
                     <div class="current-date">Painel Operacional</div>
@@ -81,22 +77,23 @@
 
                 <section class="profile-hero-card">
                     <div class="profile-meta-block">
-                        <div class="profile-avatar">CE</div>
+                        <div class="profile-avatar" id="avatar-iniciais">--</div>
                         
                         <div class="profile-info">
-                            <h3>Carlos Eduardo Silva</h3>
-                            <p><strong> E-mail:</strong> carlos.silva@sgp.com.br</p>
-                            <p><strong> Função:</strong> <span class="profile-badge">Administrador de Estoque</span></p>
+                            <h3 id="nome-usuario">Carregando...</h3>
+                            <p><strong> E-mail:</strong> <span id="email-usuario">carregando@sgp.com.br</span></p>
+                            <p><strong> Função:</strong> <span class="profile-badge" id="funcao-usuario">Carregando...</span></p>
                         </div>
                     </div>
 
                     <div class="profile-access-log">
                         <p>Último acesso ao sistema em:</p>
-                        <text>10/06/2026 às 18:42</text>
+                        <text id="ultimo-acesso">--/--/---- às --:--</text>
                     </div>
                 </section>
 
                 <h3 class="section-title">Resumo do Inventário</h3>
+                
                 <section class="metrics-grid">
                     <div class="metric-card">
                         <span class="title">Total de Peças Cadastradas</span>

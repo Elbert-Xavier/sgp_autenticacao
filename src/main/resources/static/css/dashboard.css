@@ -1,4 +1,6 @@
-/* BASE & DESIGN TOKENS (Alinhados com o CSS original de login) */
+/* =========================================
+   BASE & DESIGN TOKENS
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -16,78 +18,64 @@
     --text-secondary: #4b5870;
     --text-muted: #8a96aa;
     --border-color: #c9d4e5;
-    --sidebar-gradient: linear-gradient(180deg, #001f6b 0%, #003b8f 100%);
+    /* Gradiente: Começa branco no topo (para a logo) e desce para azul */
+    --sidebar-gradient: linear-gradient(180deg, #ffffff 0%, #cce0ff 100%);
     --shadow-subtle: 0 4px 15px rgba(0, 38, 100, 0.05);
     --shadow-card: 0 10px 25px rgba(0, 38, 100, 0.08);
 }
 
 body {
-    background-color: var(--bg-light);
+    background-color: var(--bg-light); 
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
     overflow-x: hidden;
 }
 
-/* LAYOUT PRINCIPAL */
+/* =========================================
+   LAYOUT PRINCIPAL
+   ========================================= */
 .dashboard-container {
     display: flex;
     width: 100%;
     min-height: 100vh;
 }
 
-/* SIDEBAR (MENU LATERAL) */
+/* =========================================
+   SIDEBAR (MENU LATERAL BRANCO COM AZUL)
+   ========================================= */
 .sidebar {
     width: 280px;
     background: var(--sidebar-gradient);
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px 20px;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    box-shadow: 4px 0 15px rgba(0, 31, 107, 0.08);
+    border-right: 1px solid var(--border-color);
+    z-index: 10;
 }
 
 .sidebar-top {
     width: 100%;
 }
 
-/* Estilização da Logo SGP */
+/* Logo SGP Original - AJUSTADA */
 .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 25px;
-}
-
-.brand-logo-mock {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--secondary-color);
-    font-weight: bold;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding-bottom: -30px; /* Reduzido para aproximar da linha */
+    border-bottom: 1px solid rgba(0, 31, 107, 0.1);
+    margin-bottom: -30px; /* Reduzido para aproximar do menu */
 }
 
-.brand-text h1 {
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.brand-text p {
-    font-size: 10px;
-    color: #eaf2ff;
-    opacity: 0.8;
-    text-transform: uppercase;
+.logo-sidebar {
+    width: 100%;
+    max-width: 350px; 
+    height: auto;
 }
 
 /* Menus de Navegação */
@@ -102,30 +90,29 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-    color: #eaf2ff;
+    color: var(--primary-color);
     text-decoration: none;
     padding: 14px 16px;
     border-radius: 8px;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.2s ease;
 }
 
-.menu-item a:hover, .menu-item.active a {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    font-weight: bold;
+.menu-item a:hover {
+    background: rgba(0, 102, 255, 0.1);
     transform: translateX(5px);
 }
 
 .menu-item.active a {
-    background: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 31, 107, 0.2);
 }
 
 /* Rodapé da Sidebar / Botão de Sair */
 .sidebar-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 31, 107, 0.1);
     padding-top: 20px;
 }
 
@@ -133,28 +120,30 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #ff4d4d;
+    color: #d32f2f;
     text-decoration: none;
     padding: 14px 16px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     transition: all 0.2s ease;
-    background: rgba(255, 77, 77, 0.05);
+    background: rgba(211, 47, 47, 0.05);
 }
 
 .btn-logout:hover {
-    background: #ff4d4d;
+    background: #d32f2f;
     color: white;
-    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.2);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
 }
 
-/* CONTEÚDO PRINCIPAL */
+/* =========================================
+   CONTEÚDO PRINCIPAL (DASHBOARD)
+   ========================================= */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-light);
+    background-color: transparent;
     overflow-y: auto;
 }
 
@@ -173,11 +162,6 @@ body {
 .welcome-msg h2 {
     color: var(--primary-color);
     font-size: 22px;
-}
-
-.welcome-msg span {
-    font-weight: normal;
-    color: var(--text-secondary);
 }
 
 .top-header-right {
@@ -254,7 +238,7 @@ body {
 
 .profile-badge {
     display: inline-block;
-    background: #001f6b;
+    background: var(--primary-color);
     color: white;
     font-size: 12px;
     padding: 4px 10px;
@@ -267,7 +251,7 @@ body {
 
 .profile-access-log {
     text-align: right;
-    background: #f8f9fa;
+    background: #f4f7fc;
     padding: 15px 20px;
     border-radius: 10px;
     border-left: 4px solid var(--accent-color);
@@ -306,11 +290,16 @@ body {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: var(--shadow-subtle);
+    box-shadow: var(--shadow-card);
     border: 1px solid #e1e8f2;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
 }
 
 .metric-card .title {
