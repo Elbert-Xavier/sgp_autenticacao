@@ -11,9 +11,9 @@ async function enviarCodigo() {
 	if(dados){
 		
 		const enviargmail = await fetch(`${API_ENVIAR_GMAIL}/${gmail}`)
-		
+		alert('Email enviado com recuperação de senha enviado')
 	}else{
-		
+		alert('Email não encontrado')
 	}
 	
 	

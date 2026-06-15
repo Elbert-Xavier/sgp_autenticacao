@@ -8,7 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table (name = "Usuario")
@@ -24,20 +29,35 @@ public class UsuarioEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private int Id;
+	@NotBlank
+	@Size(min = 2, max=150)
 	private String nome;
+	@NotBlank
+	@CPF
 	private String cpf;
+	@NotBlank
 	@Column(unique = true)
+	@Email
 	private String email;
 	@Size(min = 8)
+	@NotBlank
 	private String senha;
+	@NotBlank
 	private String cep;
+	@NotBlank
 	private String rua;
+	@NotBlank
 	private String numero;
 	private String complemento;
+	@NotBlank
 	private String bairro;
+	@NotBlank
 	private String cidade;
+	@NotBlank
 	private String estado;
+	@NotBlank
 	private String areaDeAtuacao;
+	@NotNull
 	private LocalDate dataHoraCadastro;
 	
 	

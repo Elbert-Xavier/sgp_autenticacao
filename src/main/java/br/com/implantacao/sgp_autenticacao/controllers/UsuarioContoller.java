@@ -51,11 +51,18 @@ public class UsuarioContoller {
 	}
 	
 	@PostMapping("/gravar")
-	@ResponseStatus(HttpStatus.CREATED)
-	public UsuarioEntity gravarUsuario(@RequestBody UsuarioEntity Usuario) {
-		Usuario.setDataHoraCadastro((LocalDate.now()));
-		Usuario.setSenha(encoder.encode(Usuario.getSenha()));
-		return usuarioRepository.save(Usuario);
+	public ResponseEntity<?> gravarUsuario(@RequestBody UsuarioEntity Usuario) {
+	    
+	    Optional<UsuarioEntity> usuarioExistente = usuarioRepository.findByEmail(Usuario.getEmail());
+	    if (usuarioExistente.isPresent()) {
+	        return ResponseEntity.status(HttpStatus.CONFLICT)
+	                             .body("{\"erro\": \"E-mail já cadastrado no sistema.\"}");
+	    }
+	    Usuario.setDataHoraCadastro(LocalDate.now());
+	    Usuario.setSenha(encoder.encode(Usuario.getSenha()));
+	    
+	    UsuarioEntity usuarioSalvo = usuarioRepository.save(Usuario);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(usuarioSalvo);
 	}
 	@PostMapping("/login")
 	public ResponseEntity<UsuarioEntity> login(@RequestBody UsuarioEntity usuarioLogin) {
