@@ -1,5 +1,10 @@
 let revelarValor = 1
 
+document.addEventListener("DOMContentLoaded", function() {
+    localStorage.removeItem(estado)
+	localStorage.removeItem(usuarioLogado)
+});
+
 async function revelar() {
 	
 	const revela = document.getElementById('senha')

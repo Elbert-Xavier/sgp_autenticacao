@@ -52,7 +52,8 @@ function carregarDadosUsuario() {
 
 function realizarLogout(event) {
     event.preventDefault();
-    localStorage.removeItem('usuarioLogado'); // Limpa a sessão
+    localStorage.removeItem('usuarioLogado');
+	localStorage.removeItem('estado'); // Limpa a sessão
     window.location.href = 'index.html'; // Volta pro login
 }
 
