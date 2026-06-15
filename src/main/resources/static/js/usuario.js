@@ -61,3 +61,91 @@ async function salvarUsuario() {
         alert("Ocorreu um erro ao tentar conectar com o servidor.");
     }
 }
+
+const API_ = '';
+
+function mascaraCPF(input) {
+    let cpf = input.value.replace(/\D/g, "");
+	
+    if (cpf.length > 3 && cpf.length <= 6) {
+        cpf = cpf.replace(/^(\d{3})(\d)/, "$1.$2");
+    } else if (cpf.length > 6 && cpf.length <= 9) {
+        cpf = cpf.replace(/^(\d{3})(\d{3})(\d)/, "$1.$2.$3");
+    } else if (cpf.length > 9) {
+        cpf = cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d)/, "$1.$2.$3-$4");
+    }
+
+    // Atualiza o valor do campo
+    input.value = cpf;
+}
+function mascaraCEP(input) {
+	let cep = input.value.replace(/\D/g, '');
+	if (cep.length > 5) {
+	        cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+	    }
+	input.value = cep
+}
+function validadorCPF(cpf) {
+	
+	let cpfSemMascara = cpf.replace(/[.-]/g, '');
+	
+	if(TestaCPF(cpfSemMascara) == false){
+		alert("cpf invalido")
+	}else{
+		input.className = "is-valid";
+}}
+
+async function buscarCep(cep) {
+	
+	let cepLimpo = cep.replace(/\D/g, '');
+	try {
+	const response = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+	const dados = await response.json();
+	
+	console.log(dados)
+	
+	document.getElementById('rua').value = dados.logradouro;
+	document.getElementById('estado').value = dados.uf;
+	document.getElementById('bairro').value = dados.bairro;
+	
+	}catch {
+		alert("cep invalido")
+		
+		document.getElementById('rua').value = "";
+		document.getElementById('estado').value = "";
+		document.getElementById('bairro').value = "";
+		
+	}
+
+}
+function TestaCPF(cpf) {
+    let Soma;
+    let Resto;
+    Soma = 0;
+	if (cpf.length != 11 ||
+	            cpf == "00000000000" ||
+	            cpf == "11111111111" ||
+	            cpf == "22222222222" ||
+	            cpf == "33333333333" ||
+	            cpf == "44444444444" ||
+	            cpf == "55555555555" ||
+	            cpf == "66666666666" ||
+	            cpf == "77777777777" ||
+	            cpf == "88888888888" ||
+	            cpf == "99999999999")
+	            return false;
+
+  for (i=1; i<=9; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+  Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(cpf.substring(9, 10)) ) return false;
+
+  Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(cpf.substring(10, 11) ) ) return false;
+    return true;
+}
