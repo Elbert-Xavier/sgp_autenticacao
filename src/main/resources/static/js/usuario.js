@@ -1,7 +1,101 @@
 const API_GRAVAR = 'http://localhost:8000/Usuario/gravar';
+const API_BUSCAR_GMAIL ='http://localhost:8000/Usuario/BuscarPorEmail';
 
 async function salvarUsuario() {
-    
+	const response = await fetch(`${API_BUSCAR_GMAIL}/${document.getElementById('email').value}`)
+	const dados = await response.json();
+	
+	let input
+	
+	if(document.getElementById('nome').value == "" ||
+	document.getElementById('cpf').value == "" ||
+	document.getElementById('email').value == "" ||
+	document.getElementById('senha').value == "" ||
+	document.getElementById('cep').value == "" ||
+	document.getElementById('rua').value == "" ||
+	document.getElementById('numero').value == "" ||
+	document.getElementById('bairro').value == "" ||
+	document.getElementById('cidade').value == "" ||
+	document.getElementById('estado').value == ""){
+		
+		alert("campos obrigatorios faltado")
+		if(document.getElementById('nome').value == ""){
+			input = document.getElementById('nome')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('nome')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('cpf').value == ""){
+			input = document.getElementById('cpf')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('cpf')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('email').value == ""){
+			input = document.getElementById('email')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('email')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('senha').value == ""){
+			input = document.getElementById('senha')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('senha')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('cep').value == ""){
+			input = document.getElementById('cep')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('cep')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('rua').value == ""){
+			input = document.getElementById('rua')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('rua')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('numero').value == ""){
+			input = document.getElementById('numero')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('numero')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('bairro').value == ""){
+			input = document.getElementById('bairro')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('bairro')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('cidade').value == ""){
+			input = document.getElementById('cidade')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('cidade')
+			input.classList.remove('is-invalid');
+		}
+		if(document.getElementById('estado').value == ""){
+			input = document.getElementById('estado')
+			input.className = "is-invalid";
+		}else{
+			input = document.getElementById('estado')
+			input.classList.remove('is-invalid');
+		}
+		
+	}else if(dados){
+		alert("gmail ja cadastrado")
+	}else if(document.getElementById('senha').value.length < 8){
+		alert("a senha deve ter no minimo 8 digitos")
+	}else{
+		
     const selectAtuacao = document.getElementById('atuacao');
     
     const Usuario = {
@@ -36,23 +130,13 @@ async function salvarUsuario() {
 
         if (resposta.status === 409) {
             alert("Email já cadastrado. Digite outro Email");
-            document.getElementById('email').focus(); // Coloca o cursor de volta no campo de e-mail
-            return; // INTERROMPE a função aqui. Não salva sessão nem redireciona.
+            document.getElementById('email').focus();
+            return;
         }
 
         if (!resposta.ok) {
             throw new Error("Erro ao salvar no servidor.");
         }
-
-
-        const usuarioSessao = {
-            nome: Usuario.nome,
-            email: Usuario.email,
-            atuacao: atuacaoTexto 
-        };
-        
-        localStorage.setItem('usuarioLogado', JSON.stringify(usuarioSessao));
-        localStorage.setItem('estado', 'logado'); 
         
         window.location.href = "index.html";
 
@@ -61,11 +145,11 @@ async function salvarUsuario() {
         alert("Ocorreu um erro ao tentar conectar com o servidor.");
     }
 }
-
-const API_ = '';
+}
 
 function mascaraCPF(input) {
-    let cpf = input.value.replace(/\D/g, "");
+	
+	cpf = input.value.replace(/\D/g, "")
 	
     if (cpf.length > 3 && cpf.length <= 6) {
         cpf = cpf.replace(/^(\d{3})(\d)/, "$1.$2");
@@ -74,11 +158,12 @@ function mascaraCPF(input) {
     } else if (cpf.length > 9) {
         cpf = cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d)/, "$1.$2.$3-$4");
     }
-
-    // Atualiza o valor do campo
     input.value = cpf;
 }
-function mascaraCEP(input) {
+function senha() {
+	
+}
+function mascaraCep(input) {
 	let cep = input.value.replace(/\D/g, '');
 	if (cep.length > 5) {
 	        cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
@@ -91,32 +176,27 @@ function validadorCPF(cpf) {
 	
 	if(TestaCPF(cpfSemMascara) == false){
 		alert("cpf invalido")
-	}else{
-		input.className = "is-valid";
-}}
+	}
+}
 
 async function buscarCep(cep) {
 	
 	let cepLimpo = cep.replace(/\D/g, '');
-	try {
+	
 	const response = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
 	const dados = await response.json();
 	
 	console.log(dados)
-	
-	document.getElementById('rua').value = dados.logradouro;
-	document.getElementById('estado').value = dados.uf;
-	document.getElementById('bairro').value = dados.bairro;
-	
-	}catch {
-		alert("cep invalido")
-		
+	if(dados.erro){
 		document.getElementById('rua').value = "";
 		document.getElementById('estado').value = "";
 		document.getElementById('bairro').value = "";
-		
-	}
 
+	}else{
+		document.getElementById('rua').value = dados.logradouro;
+		document.getElementById('estado').value = dados.uf;
+		document.getElementById('bairro').value = dados.bairro;
+	}
 }
 function TestaCPF(cpf) {
     let Soma;
@@ -149,3 +229,4 @@ function TestaCPF(cpf) {
     if (Resto != parseInt(cpf.substring(10, 11) ) ) return false;
     return true;
 }
+

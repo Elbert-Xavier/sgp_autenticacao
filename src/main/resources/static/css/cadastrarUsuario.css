@@ -16,6 +16,9 @@
     --text-muted: #8f9bb3;
     --border-color: #e4e9f2;
     --bg-input: #f7f9fc;
+    /* Nova cor para destacar erros/informações inválidas */
+    --danger-color: #e02424; 
+    --danger-bg: #fdf2f2;
 }
 
 body {
@@ -182,6 +185,7 @@ label {
     left: 15px;
     color: #a0aec0;
     font-size: 14px;
+    transition: color 0.2s ease;
 }
 
 input, select {
@@ -224,6 +228,48 @@ select {
 .btn-submit:hover {
     background-color: var(--primary-color);
 }
+
+/* =========================================
+   ESTADOS DE VALIDAÇÃO (ERROS)
+   ========================================= */
+
+/* Estilo para quando o input receber a classe ".is-invalid" via JS */
+input.is-invalid, select.is-invalid {
+    border-color: var(--danger-color);
+    background-color: var(--danger-bg);
+}
+
+/* Foco em um campo inválido altera o shadow para vermelho */
+input.is-invalid:focus, select.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(224, 36, 36, 0.15);
+    background-color: #fff;
+}
+
+/* Altera a cor do ícone correspondente para vermelho */
+.form-group.has-error .input-icon,
+input.is-invalid + .input-icon {
+    color: var(--danger-color);
+}
+
+/* Texto de feedback de erro (Adicione essa tag <span class="error-message"> no HTML se quiser) */
+.error-message {
+    color: var(--danger-color);
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Opcional: Se você preferir usar a validação padrão do navegador (HTML5 :invalid)
+   Descomente as linhas abaixo. (Nota: :user-invalid evita que o campo nasça vermelho) */
+/*
+input:user-invalid, select:user-invalid {
+    border-color: var(--danger-color);
+    background-color: var(--danger-bg);
+}
+*/
 
 /* =========================================
    RESPONSIVIDADE
