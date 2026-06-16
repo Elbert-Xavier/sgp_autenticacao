@@ -7,6 +7,8 @@ async function novasenha() {
 	let confirmacao = document.getElementById('confirmar-senha').value
 	
 	if(senhanova == confirmacao) {
+		
+		alert("Senha redefinida Com sucesso")
 	
 	const gmailUsuario = new URLSearchParams(window.location.search);
 	const gmail = gmailUsuario.get('email');
@@ -27,6 +29,10 @@ async function novasenha() {
 		})
 		
 		console.log(salvar)
+	}else{
+		alert("Senhas digitadas nao conferem")
+		document.getElementById('confirmar-senha').value = "";
+		
 	}
 	
 }
