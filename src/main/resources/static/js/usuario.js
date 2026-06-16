@@ -92,8 +92,6 @@ async function salvarUsuario() {
 		
 	}else if(dados){
 		alert("gmail ja cadastrado")
-	}else if(document.getElementById('senha').value.length < 8){
-		alert("a senha deve ter no minimo 8 digitos")
 	}else{
 		
     const selectAtuacao = document.getElementById('atuacao');
@@ -160,9 +158,6 @@ function mascaraCPF(input) {
     }
     input.value = cpf;
 }
-function senha() {
-	
-}
 function mascaraCep(input) {
 	let cep = input.value.replace(/\D/g, '');
 	if (cep.length > 5) {
@@ -176,6 +171,11 @@ function validadorCPF(cpf) {
 	
 	if(TestaCPF(cpfSemMascara) == false){
 		alert("cpf invalido")
+	}
+}
+function validarSenha(input){
+	if(input.length < 8){
+		document.getElementById('senhaValor').value = "a senha deve possuir 8 digitos no minimo"
 	}
 }
 
