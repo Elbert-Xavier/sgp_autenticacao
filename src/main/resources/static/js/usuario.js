@@ -18,7 +18,7 @@ async function salvarUsuario() {
 	document.getElementById('cidade').value == "" ||
 	document.getElementById('estado').value == ""){
 		
-		alert("campos obrigatorios faltado")
+		alert("campos obrigatórios faltando")
 		if(document.getElementById('nome').value == ""){
 			input = document.getElementById('nome')
 			input.className = "is-invalid";
