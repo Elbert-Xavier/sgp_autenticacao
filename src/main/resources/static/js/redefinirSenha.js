@@ -1,5 +1,5 @@
-const API_BUSCAR_GMAIL ='http://localhost:8000/Usuario/BuscarPorEmail';
-const API_NOVA_SENHA = 'http://localhost:8000/Usuario/novaSenha';
+const API_BUSCAR_GMAIL ='http://localhost:8010/Usuario/BuscarPorEmail';
+const API_NOVA_SENHA = 'http://localhost:8010/Usuario/novaSenha';
 
 async function novasenha() {
 	
@@ -27,6 +27,8 @@ async function novasenha() {
 			},
 			body : JSON.stringify(dados)
 		})
+		
+		window.location.href ="index.html"
 		
 		console.log(salvar)
 	}else{

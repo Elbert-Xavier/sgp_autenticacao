@@ -28,7 +28,7 @@ async function logar(){
 			email: email,
 			senha: senha
 	};
-	const response = await fetch("http://localhost:8000/Usuario/login", {
+	const response = await fetch("http://localhost:8010/Usuario/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

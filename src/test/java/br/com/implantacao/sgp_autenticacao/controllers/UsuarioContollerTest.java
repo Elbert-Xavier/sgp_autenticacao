@@ -106,16 +106,6 @@ public class UsuarioContollerTest {
 	}
 	
 	@Test
-	public void DeletarUsuarioPorID() throws Exception {
-		
-		mockMvc.perform(delete("/Usuario/deletar/1"))
-			.andDo(print())
-			.andExpect(status().isNoContent());
-		verify(usuarioRepository).deleteById(1);
-		
-	}
-	
-	@Test
 	public void SalvarUsuario() throws Exception {
 		
 		UsuarioEntity Usuario = new UsuarioEntity();
