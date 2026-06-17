@@ -191,11 +191,13 @@ async function buscarCep(cep) {
 		document.getElementById('rua').value = "";
 		document.getElementById('estado').value = "";
 		document.getElementById('bairro').value = "";
+		document.getElementById('cidade').value = "";
 
 	}else{
 		document.getElementById('rua').value = dados.logradouro;
 		document.getElementById('estado').value = dados.uf;
 		document.getElementById('bairro').value = dados.bairro;
+		document.getElementById('cidade').value = dados.localidade;
 	}
 }
 function TestaCPF(cpf) {
