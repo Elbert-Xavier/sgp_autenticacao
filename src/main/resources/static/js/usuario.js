@@ -1,5 +1,5 @@
-const API_GRAVAR = 'http://localhost:8010/Usuario/gravar';
-const API_BUSCAR_GMAIL ='http://localhost:8010/Usuario/BuscarPorEmail';
+const API_GRAVAR = 'http://192.168.10.84:8010/Usuario/gravar';
+const API_BUSCAR_GMAIL ='http://192.168.10.84:8010/Usuario/BuscarPorEmail';
 
 async function salvarUsuario() {
 	const response = await fetch(`${API_BUSCAR_GMAIL}/${document.getElementById('email').value}`)

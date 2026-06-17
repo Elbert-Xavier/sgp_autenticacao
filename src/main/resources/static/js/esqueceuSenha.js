@@ -1,5 +1,5 @@
-const API_ENVIAR_GMAIL ='http://localhost:8010/email';
-const API_BUSCAR_GMAIL ='http://localhost:8010/Usuario/BuscarPorEmail';
+const API_ENVIAR_GMAIL ='http://192.168.10.84:8010/email';
+const API_BUSCAR_GMAIL ='http://192.168.10.84:8010/Usuario/BuscarPorEmail';
 
 async function enviarCodigo() {
 	
