@@ -1,4 +1,4 @@
-const API_BUSCAR_GMAIL ='http://localhost:8010/Usuario/BuscarPorEmail';
+const API_BUSCAR_GMAIL ='http://192.168.10.84:8010/Usuario/BuscarPorEmail';
 const API_NOVA_SENHA = 'http://192.168.10.84/:8010/Usuario/novaSenha';
 
 async function novasenha() {

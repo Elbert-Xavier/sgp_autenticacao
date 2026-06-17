@@ -1,3 +1,5 @@
+const API_LOGIN = 'http://192.168.10.84:8010/Usuario/login';
+
 let revelarValor = 1
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -28,7 +30,7 @@ async function logar(){
 			email: email,
 			senha: senha
 	};
-	const response = await fetch("http://192.168.10.84:8010/Usuario/login", {
+	const response = await fetch(API_LOGIN, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
