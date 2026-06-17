@@ -2,10 +2,9 @@ const API_GRAVAR = 'http://192.168.10.84:8010/Usuario/gravar';
 const API_BUSCAR_GMAIL ='http://192.168.10.84:8010/Usuario/BuscarPorEmail';
 
 async function salvarUsuario() {
+	
 	const response = await fetch(`${API_BUSCAR_GMAIL}/${document.getElementById('email').value}`)
 	const dados = await response.json();
-	
-	let input
 	
 	if(document.getElementById('nome').value == "" ||
 	document.getElementById('cpf').value == "" ||
