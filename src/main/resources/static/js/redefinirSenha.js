@@ -28,10 +28,11 @@ async function novasenha() {
 			body : JSON.stringify(dados)
 		})
 		
-		window.location.href ="index.html"
+		window.location.href ="http://192.168.10.84:8010/index.html"
 		
 		console.log(salvar)
 	}else{
+		
 		alert("Senhas digitadas nao conferem")
 		document.getElementById('confirmar-senha').value = "";
 		

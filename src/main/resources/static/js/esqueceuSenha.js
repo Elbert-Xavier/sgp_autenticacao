@@ -7,14 +7,19 @@ async function enviarCodigo() {
 	
 	const response = await fetch(`${API_BUSCAR_GMAIL}/${gmail}`)
 	const dados = await response.json();
+	document.getElementById('botaoEnviarCodigo').disabled = true;
 	
 	if(dados){
 		
 		const enviargmail = await fetch(`${API_ENVIAR_GMAIL}/${gmail}`)
+		
 		alert('Email enviado com recuperação de senha enviado')
+		
 	}else{
 		alert('Email não encontrado')
+		document.getElementById('emailDigitado').value = "";
+		
 	}
 	
-	
+	document.getElementById('botaoEnviarCodigo').disabled = false;
 }

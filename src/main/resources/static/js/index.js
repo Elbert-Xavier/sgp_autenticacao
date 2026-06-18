@@ -45,7 +45,7 @@ async function logar(){
 			JSON.stringify(data)
 		);
 		localStorage.setItem('estado','logado')
-		window.location.href = "dashboard.html";
+		window.location.href = "http://192.168.10.84:8010/dashboard.html";
 	}else{
 		alert("Email ou Senha invalidos!");
 	}
